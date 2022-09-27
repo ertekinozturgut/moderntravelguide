@@ -1,0 +1,23 @@
+{
+  "name": "moderntraveler",
+  "description": "",
+  "version": "1.0.0",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ertekinozturgut/moderntravelguide.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ertekinozturgut/moderntravelguide/issues"
+  },
+  "homepage": "https://github.com/ertekinozturgut/moderntravelguide#readme",
+  "dependencies": {
+    "firebase": "^9.10.0"
+  }
+}
