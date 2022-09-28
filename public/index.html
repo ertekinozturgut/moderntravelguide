@@ -393,70 +393,67 @@
                 countryQuery = $("#country").val();
                 placeQuery = "touristic+places";
 
-                if ((country == "" || city == "")) {
+                if ((countryQuery == "" || cityQuery == "")) {
                     alert("You must select country and city");
                     isValid = false;
                 }
 
                 if (isValid) {
                     mapframeInit(placeQuery, cityQuery, countryQuery);
+                    youtubeInit(placeQuery + " in " + cityQuery);
+
                 }
             })
 
             function mapframeInit(place, city, country, coordinates = "") {
 
 
-                var iframeHtml = '<iframe class="position-relative rounded w-100 h-100" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade"' +
+                var iframeHtml = '<iframe id="map-frame" class="position-relative rounded w-100 h-100" loading="lazy" allowfullscreen ' +
                     'src="https://www.google.com/maps/embed/v1/place?key=AIzaSyA-HbKmHKg1xJRIsMvEgoZly8sc_b9XaJM' + (coordinates != ""? "&center=" + coordinates+"&q=touristic-places" : "&q={placeQuery}+in+{cityQuery}+{countryQuery}") +'"' +
-                    'frameborder="0" style="min-height: 400px; border:0;" aria-hidden="false"' +
+                    'frameborder="0" style="min-height: 400px; border:0;" ' +
                     'tabindex="0"></iframe>';
 
                 iframeHtml = iframeHtml.replace("{placeQuery}", place);
                 iframeHtml = iframeHtml.replace("{cityQuery}", city);
                 iframeHtml = iframeHtml.replace("{countryQuery}", country);
                 $(".map-area").html(iframeHtml);
+
+                  
             }
 
 
             $("#get-location").on("click", function () {
-                var coords;
                 navigator.geolocation.getCurrentPosition((position) => {
-                    coords = position.coords;
+                    var coordinates = position.coords.latitude + "," + position.coords.longitude;
+                    mapframeInit("", "", "", coordinates );
+
                 });
-                mapframeInit("", "", "", coords.latitude + "," + coords.longitude);
             })
-
-
-
+          
+         
             $(".place-types-cards .cat-item").click(function (e) {
                 var isValid = true;
                 placeQuery = $(this).data("query");
                 cityQuery = $("#city").val();
                 countryQuery = $("#country").val();
 
-                if (country == null || city == null) {
+                if (countryQuery == null || cityQuery == null) {
                     alert("You must select country and city");
                     isValid = false;
                 }
-                if (placeType == null) {
+                if (placeQuery == null) {
                     alert("If you want you can select place type with clicking place type cards");
                     placeQuery = "touristic+places";
                 }
 
                 if (isValid) {
                     mapframeInit(placeQuery, cityQuery, countryQuery);
+                    youtubeInit(placeQuery + " in " + cityQuery);
                 }
             })
 
 
-            $(".map-area").on("click", function () {
-
-                setTimeout(function () {
-
-                    youtubeInit($(".place-name").textContent);
-                }, 1500)
-            })
-
+        
 
             function youtubeInit(search) {
                 var duration = "any";
@@ -535,11 +532,39 @@
 
             }
 
+            let oldPlace = "";
+            
+            //(function my_func() {
+            //    try {
+            //        console.log("a")
+            //        if ($(".place-name") != null) {
+            //            console.log($(".place-name"))
+
+            //            if ($(".place-name").textContent != null) {
+            //                console.log("c")
+
+            //                if (oldPlace != $(".place-name").textContent) {
+            //                    console.log("d")
+
+            //                    youtubeInit($(".place-name").textContent);
+            //                    oldPlace = $(".place-name").textContent;
+            //                }
+            //            }
+            //        }
+            //    } catch (e) {
+
+            //    }
+
+            //    if (true) {
+            //        setTimeout(my_func, 600);
+            //    }
+            //})();
+
         });
 
 
     </script>
-
+  
 
 </body>
 
