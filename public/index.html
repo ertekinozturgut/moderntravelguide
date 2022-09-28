@@ -429,7 +429,7 @@
 
 
                 var iframeHtml = '<iframe id="map-frame" class="position-relative rounded w-100 h-100" loading="lazy" allowfullscreen ' +
-                    'src="https://www.google.com/maps/embed/v1/place?key=AIzaSyA-HbKmHKg1xJRIsMvEgoZly8sc_b9XaJM' + (coordinates != ""? "&center=" + coordinates+"&q=touristic-places" : "&q={placeQuery}+in+{cityQuery}+{countryQuery}") +'"' +
+                    'src="https://www.google.com/maps/embed/v1/search?key=AIzaSyA-HbKmHKg1xJRIsMvEgoZly8sc_b9XaJM&language=en' + (coordinates != ""? "&center=" + coordinates+"&q=touristic-places" : "&q={placeQuery}+in+{cityQuery}+{countryQuery}") +'"' +
                     'frameborder="0" style="min-height: 400px; border:0;" ' +
                     'tabindex="0"></iframe>';
 
@@ -562,33 +562,6 @@
 
             }
 
-            let oldPlace = "";
-
-            //(function my_func() {
-            //    try {
-            //        console.log("a")
-            //        if ($(".place-name") != null) {
-            //            console.log($(".place-name"))
-
-            //            if ($(".place-name").textContent != null) {
-            //                console.log("c")
-
-            //                if (oldPlace != $(".place-name").textContent) {
-            //                    console.log("d")
-
-            //                    youtubeInit($(".place-name").textContent);
-            //                    oldPlace = $(".place-name").textContent;
-            //                }
-            //            }
-            //        }
-            //    } catch (e) {
-
-            //    }
-
-            //    if (true) {
-            //        setTimeout(my_func, 600);
-            //    }
-            //})();
 
         });
 
